@@ -8,13 +8,14 @@ workflow {
 }
 
 process alignment {
- publishDir('/home/katerine/Desktop/project', mode:'move')
+ publishDir('/home/katerine/Desktop/project/aligned', mode:'move')
  maxForks 1
  input:
  path reads 
  
  output:
  path("${reads.simpleName}.bam"), emit: aligned_ch
+ path("*.bai"), emit: indexed 
 
  script:
  """
